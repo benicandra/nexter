@@ -388,5 +388,36 @@
         does NOT apply if you plan to produce your own course or tutorials based on this project.
       </p>
     </footer>
+
+    <div class="lightbox">
+      <button class="lightbox__close"></button>
+      <img src="" alt="Lightbox image" class="lightbox__img" />
+    </div>
+
+    <script>
+      const galleryItems = document.querySelectorAll('.gallery__item');
+      const lightbox = document.querySelector('.lightbox');
+      const lightboxImg = document.querySelector('.lightbox__img');
+      const lightboxClose = document.querySelector('.lightbox__close');
+
+      galleryItems.forEach((item) => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('.gallery__img');
+          lightboxImg.src = img.src;
+          lightboxImg.alt = img.alt;
+          lightbox.classList.add('active');
+        });
+      });
+
+      lightboxClose.addEventListener('click', () => {
+        lightbox.classList.remove('active');
+      });
+
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          lightbox.classList.remove('active');
+        }
+      });
+    </script>
   </body>
 </html>
